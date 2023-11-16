@@ -1,0 +1,73 @@
+:root {
+  --primary-dark: #faf5f1;
+  --primary-light: #1f2a40;
+  --primary-hover: #2a3856;
+  --white-color: #e0e0e0;
+  --green-color: #3da58a;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.font-18 {
+  font-size: 18px;
+}
+
+/* color */
+.b-gray {
+  background-color: #106F85;
+}
+
+.color-white {
+  color: var(--white-color) !important;
+}
+
+.color-green {
+  color: var(--green-color) !important;
+}
+
+.primary-background {
+  background-color: var(--primary-dark) !important;
+  color: var(--white-color);
+}
+
+.box-background {
+  background-color: var(--primary-light) !important;
+}
+
+.background-primary-light {
+  background-color: var(--primary-light) !important;
+
+}
+
+.box-background:hover {
+  cursor: pointer;
+  background-color: var(--primary-hover) !important;
+}
+
+.btn {
+  background-color: #3e4396 !important;
+  color: var(--white-color) !important;
+  border-color: #3e4396 !important;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: var(--primary-dark) !important;
+
+}

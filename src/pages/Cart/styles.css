@@ -1,0 +1,31 @@
+.cart {
+    padding-top: 100px !important;
+}
+
+.order-image-product {
+    background: #EFE6DE;
+}
+
+.order-image-product img {
+    max-width: 25px;
+}
+
+.order-item {
+    border-top: 1px solid #000;
+}
+
+.total-price {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.btn-payment {
+    background: #B9A38D !important;
+    color: #fff !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.btn-payment:hover {
+    background: #b9a38dee !important;
+}

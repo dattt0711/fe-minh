@@ -1,0 +1,13 @@
+.login-container {
+    padding-top: 100px;
+    min-height: 100vh;
+
+}
+
+.link-login {
+    color: #815D35;
+}
+
+.login-cover {
+    min-height: 50vh;
+}

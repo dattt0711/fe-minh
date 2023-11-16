@@ -1,0 +1,297 @@
+.card-category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card-category {
+  position: relative;
+}
+
+.card-category p {
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
+  z-index: 100;
+}
+
+.overlay-card-category {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.3;
+}
+
+.img-banner {
+  height: 650px !important;
+  width: 100%;
+}
+
+.card-category-1 {
+  background: url('https://xaydungnguyenanh.vn/wp-content/uploads/2022/11/Untitled-design-2021-08-20T121150.096.png');
+  background-size: cover;
+}
+
+.card-category-2 {
+  background: url('https://xaydungnguyenanh.vn/wp-content/uploads/2022/11/images.jpg');
+  background-size: cover;
+}
+
+.card-category-3 {
+  background: url('https://xaydungnguyenanh.vn/wp-content/uploads/2022/11/images-1.jpg');
+  background-size: cover;
+}
+
+.card-category-4 {
+  background: url('https://xaydungnguyenanh.vn/wp-content/uploads/2022/11/Wallpaper-Rolls-LDD.jpg');
+  background-size: cover;
+}
+
+.card-category-5 {
+  background: url('https://xaydungnguyenanh.vn/wp-content/uploads/2022/11/O1CN01lHEyCm1GDLZovTphe_6000000000588-0-tbvideo.jpg');
+  background-size: cover;
+}
+
+.card-category-6 {
+  background: url('https://xaydungnguyenanh.vn/wp-content/uploads/2022/11/BRT-000013c634b0778b8ae5548ba61a1fe418faa2-900x600-1.jpg');
+  background-size: cover;
+}
+
+.carousel-product-card {
+  width: 100%;
+  padding: 15px;
+  /* border: 1px solid rgb(206, 205, 205); */
+}
+
+.carousel-product-card:hover {
+  /* background-color: #106f85; */
+  transition: 0.5s ease-in-out;
+}
+
+.carousel-product-card img {
+  width: 100%;
+}
+
+.carousel-product-card span {
+  font-weight: bold;
+  color: #106f85;
+}
+
+.carousel-product-card:hover span {
+  color: white;
+}
+
+.carousel-product-card p {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.carousel-product-card:hover p {
+  color: white;
+}
+
+
+.carousel-product-news {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  border: 1px solid rgb(206, 205, 205);
+}
+
+.carousel-product-news img {
+  width: 50%;
+}
+
+.carousel-product-news p {
+  margin: 5px 0 20px 15px;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.carousel-product-news span {
+  margin: 5px 0px 0 15px;
+  font-size: 18px;
+}
+
+.item-news {
+  position: relative;
+}
+
+.item-news .carousel-product-news-time {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  opacity: 0.8;
+  background-color: rgb(39, 38, 38);
+  color: white;
+  text-align: center;
+  padding: 10px 10px;
+}
+
+.item-news .carousel-product-news-time p {
+  margin: 0
+}
+
+.item-news .carousel-product-news-time p.day {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.comment {
+  background-image: url('https://bizweb.dktcdn.net/100/369/704/themes/741072/assets/bg-testimonial6.jpg?1621480486681');
+  height: 300px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-item img {
+  border-radius: 50%;
+  border: 10px solid rgba(0, 0, 0, 0.7);
+  margin-bottom: -50px;
+  z-index: 2;
+}
+
+.comment-item-text {
+  text-align: center;
+  background-color: black;
+  opacity: 0.7;
+  color: white;
+  padding: 60px 50px 30px 50px;
+}
+
+.footer {
+  color: #000;
+}
+
+.footer-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.footer-left {
+  background-color: rgba(16, 111, 133, 0.7);
+  padding: 20px;
+}
+
+.footer-right p {
+  margin: 10px 0;
+}
+
+@media only screen and (max-width: 428px) {
+  .img-banner {
+    height: 320px !important;
+  }
+
+  .footer-right {
+    display: none;
+  }
+}
+
+.banner-col img {
+  max-width: 100%;
+}
+
+.full-width {
+  max-width: 100%;
+  height: 100%;
+}
+
+.black-color {
+  color: #000;
+}
+
+.right-collection {
+  border-top: 1px solid #816246;
+}
+
+.card-collection {
+  width: 60%;
+  background: #F5EDE6;
+  color: #000;
+  border-radius: 169px;
+  padding: 80px 10px;
+}
+
+.card-collection span {
+  padding: 10px 20px;
+  border-radius: 40px;
+  border: 2px solid #816246;
+}
+
+.card-collection span:hover {
+  cursor: pointer;
+}
+
+.btn-home {
+  padding: 10px 20px;
+  border-radius: 40px;
+  border: 2px solid #816246;
+  color: #000;
+  width: fit-content;
+}
+
+.btn-home:hover {
+  cursor: pointer;
+}
+
+.subscribe {
+  /* filter: opacity(30%); */
+  position: relative;
+
+}
+
+.subscribe:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  background-image: url("../../../images/1.21.jpeg");
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+}
+
+.subscribe-sub {
+  width: 40%;
+  margin: 0 auto;
+  z-index: 20;
+}
+
+.subscribe-footer {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.btn-subscribe:hover {
+  cursor: pointer;
+}
+
+.social-link {
+  color: #000;
+}
+
+.social-link:hover {
+  cursor: pointer;
+  color: #000;
+}
