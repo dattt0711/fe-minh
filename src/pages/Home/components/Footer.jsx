@@ -12,22 +12,22 @@ function Footer() {
       <Container>
         <Row className="border-bottom pb-3">
           <Col sm={4}>
-            <h3 className="mb-2">COSMETICS</h3>
-            <p>OAT ENOUGH</p>
-            <p>EASY SUNLIFE</p>
-            <p>MORE DEEP AMPOULE</p>
+            <h3 className="mb-2">FOOTBALL</h3>
+            <p>BOOKING</p>
+            <p>STORE</p>
+            <p>24/24 HOURS</p>
           </Col>
           <Col sm={4}>
             <h3 className="mb-2">HELP</h3>
-            <p>TRACK AN ORDER</p>
-            <p>SHIPPING INFORMATION</p>
-            <p>RETURN & EXPLAIN</p>
+            <p>CHECK AVAILABLE STADIUM</p>
+            <p>INFORMATION</p>
+            <p>CONTACT</p>
             <p>MY ACCOUNT</p>
           </Col>
           <Col sm={4}>
             <div className="mb-2">
               <h3 className="mb-2">CONTACT US</h3>
-              <p>Customerservice@uptownliiz.com</p>
+              <p>footballboking@soccer.uk.com</p>
               <p>+84-981234798</p>
               <p>Hanoi University, Thanh Xuan District, Hanoi </p>
             </div>
@@ -47,8 +47,8 @@ function Footer() {
             </div>
           </Col>
         </Row>
-        <Row className="mt-2">
-          FINAL INTERNET AND WEB SERVICES _ GROUP 21
+        <Row className="mt-2 d-flex justify-content-center">
+          STADIUM BOOKING
         </Row>
       </Container>
     </div>

@@ -29,3 +29,8 @@
 .btn-payment:hover {
     background: #b9a38dee !important;
 }
+
+.qr-image {
+    max-width: 150px;
+    max-height: 150px;
+}

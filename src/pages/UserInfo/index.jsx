@@ -36,32 +36,19 @@ function UserInfo() {
                         <div className="avatar d-flex align-items-center black-color">
                             <img src="https://i.bloganchoi.com/bloganchoi.com/wp-content/uploads/2020/08/blackpink-jisoo-phim-moi-696x859.jpg?fit=700%2C20000&quality=95&ssl=1" alt="" />
                             <div className="ms-3">
-                                <p className="my-0">Anna</p>
-                                <p className="my-0">Karenina</p>
+                                <p className="my-0">{dataInfo?.username || "Anna"}</p>
                             </div>
                         </div>
                         <div className="black-color border-bottom ps-2 pb-2 mt-5">
                             <PersonOutlineIcon className="me-2" />
                             <span>PERSONAL INFO</span>
                         </div>
-                        <div className="black-color border-bottom ps-2 pb-2 mt-3">
-                            <Link to="/cart" className="text-dark" style={{ textDecoration: 'none' }}>
-                                <ShoppingCartIcon className="me-2" />
-                                <span>MY CART</span>
-                            </Link>
-                        </div>
                         {isAdmin && <div className="black-color border-bottom ps-2 pb-2 mt-3">
                             <Link to="/order" className="text-dark" style={{ textDecoration: 'none' }}>
                                 <EventNoteIcon className="me-2" />
-                                <span>MY ORDER</span>
+                                <span>BOOKING HISTORIES</span>
                             </Link>
                         </div>}
-                        <div className="black-color border-bottom ps-2 pb-2 mt-3">
-                            <Link to="/product" className="text-dark" style={{ textDecoration: 'none' }}>
-                                <FavoriteBorderIcon className="me-2" />
-                                <span>FAVOURITES</span>
-                            </Link>
-                        </div>
                         <div className="black-color border-bottom ps-2 pb-2 mt-3" onClick={handleLogout}>
                             <LogoutIcon className="me-2" />
                             <span>LOG OUT</span>
@@ -70,7 +57,6 @@ function UserInfo() {
                     <Col sm={2}></Col>
                     <Col sm={6}>
                         <div>
-                            {console.log(dataInfo, 'dataInfo')}
                             <h3 className="mb-4">Personal information</h3>
                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                 <Form.Label>Username</Form.Label>

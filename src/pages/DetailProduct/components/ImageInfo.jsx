@@ -14,14 +14,6 @@ function ImageInfo(props) {
   return (
     <Container >
       <Row className="d-flex align-items-center">
-        <Col sm={2}>
-          <div className="d-flex flex-column align-items-center justify-content-center">
-            <img onClick={() => setImgShow(dataInfo?.subImage1)} style={{ width: '80px', height: '70px', border: '1px solid gray' }} src={dataInfo?.subImage1} alt='#' />
-            <img onClick={() => setImgShow(dataInfo?.subImage2)} style={{ width: '80px', height: '70px', border: '1px solid gray', margin: '0 20px' }} src={dataInfo?.subImage2} alt='#' />
-            <img onClick={() => setImgShow(dataInfo?.subImage3)} style={{ width: '80px', height: '70px', border: '1px solid gray' }} src={dataInfo?.subImage3} alt='#' />
-            <img onClick={() => setImgShow(dataInfo?.image)} style={{ width: '80px', height: '70px', border: '1px solid gray' }} src={dataInfo?.image} alt='#' />
-          </div>
-        </Col>
         <Col sm={8}>
           <img style={{ width: '100%' }} src={imgShow} alt='#' />
         </Col>

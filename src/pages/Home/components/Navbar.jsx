@@ -51,16 +51,11 @@ function NavbarCommon() {
                     <PermIdentityIcon className="text-dark" />
                   </Nav.Link>
                 </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link href="/product">
-                    <FavoriteBorderIcon className="text-dark" />
-                  </Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
+                {/* <Nav.Item>
                   <Nav.Link href="/cart">
                     <ShoppingCartIcon className="text-dark" />
                   </Nav.Link>
-                </Nav.Item>
+                </Nav.Item> */}
               </Nav>
             </Col>
           </Row>

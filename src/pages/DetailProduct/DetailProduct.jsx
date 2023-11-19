@@ -13,6 +13,9 @@ import {
   fetchInfoProductApi, fetchRelatedListProductsApi,
 } from '../../api/productsAPI';
 import {
+  fetchInfoStadiumApi
+} from '../../api/stadiumsAPI';
+import {
   fetchAddToCart,
 } from '../../api/cartsAPI';
 import {
@@ -21,15 +24,9 @@ import {
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from 'react'
 const initialValue = {
-  productName: 'OAT ESSENTIAL WATER',
-  description: 'UPTOWN LIIZ presents the Oat Enough Essential Water. Experience a healthy glow with the Oat Enough routine that contains the rich moisture and nutrition of oats',
-  category: '',
-  price: '49.98',
-  image: 'https://bizweb.dktcdn.net/thumb/grande/100/369/704/products/3-ada177ab-e8ae-46f5-8ee9-19e30da4d7ed.jpg?v=1575349214200',
-  details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  subImage1: 'https://bizweb.dktcdn.net/thumb/grande/100/369/704/products/3-ada177ab-e8ae-46f5-8ee9-19e30da4d7ed.jpg?v=1575349214200',
-  subImage2: 'https://bizweb.dktcdn.net/thumb/grande/100/369/704/products/3-ada177ab-e8ae-46f5-8ee9-19e30da4d7ed.jpg?v=1575349214200',
-  subImage3: 'https://bizweb.dktcdn.net/thumb/grande/100/369/704/products/3-ada177ab-e8ae-46f5-8ee9-19e30da4d7ed.jpg?v=1575349214200',
+  name: 'Old trafford',
+  address: 'Old Trafford (/ˈtræfərd/) is a football stadium in Old Trafford, Greater Manchester, England, and the home of Manchester United. With a capacity of 74,310[1] it is the largest club football stadium (and second-largest football stadium overall after Wembley Stadium) in the United Kingdom, and the twelfth-largest in Europe.[3] It is about 0.5 miles (800 m) from Old Trafford Cricket Ground and the adjacent tram stop.',
+  image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Manchester_United_Old_Trafford_%28cropped%29.jpg/250px-Manchester_United_Old_Trafford_%28cropped%29.jpg',
 }
 const initParams = {
   productObjId: '',
@@ -46,30 +43,7 @@ function DetailProduct() {
   const [reset, setReset] = useState(false);
   const [comments, setComments] = useState([]);
   const [quantity, setQuantity] = useState(1);
-  //handle change quantity
-  const handleChangeQuantity = (type) => {
-    if (type === "plus") setQuantity(prev => prev + 1);
-    if (type === "minus") {
-      if (quantity > 1) {
-        setQuantity(prev => prev - 1);
-      }
-    }
-  }
 
-  const handleAddToCart = async (productObjId) => {
-    const userInfo = JSON.parse(localStorage.getItem("USERS"));
-    const userObjId = userInfo?._id;
-    if (userObjId) {
-      await fetchAddToCart({
-        userObjId: userObjId,
-        productObjIds: [{
-          productObjId: productObjId,
-          quantity: quantity,
-        }]
-      });
-      setQuantity(1);
-    }
-  }
   //create
   const handleCloseModal = () => {
     setCreateParams(initParams);
@@ -85,7 +59,7 @@ function DetailProduct() {
     setCreateParams(initialValue);
   }
   const handleOpenModal = () => {
-    setShow(true);
+    // setShow(true);
   }
 
   const handleOnChange = (event) => {
@@ -126,7 +100,7 @@ function DetailProduct() {
   }, [id, reset])
   useEffect(() => {
     async function fetchData() {
-      const rs = await fetchInfoProductApi(id);
+      const rs = await fetchInfoStadiumApi(id);
       if (rs?.data?.success) {
         setDataInfo(rs.data.data);
       }
@@ -142,10 +116,8 @@ function DetailProduct() {
           </Col>
           <Col sm={6}>
             <DetailInfo
-              handleChangeQuantity={handleChangeQuantity}
               quantity={quantity}
               dataInfo={dataInfo}
-              handleAddToCart={handleAddToCart}
             />
           </Col>
         </Row>
@@ -156,22 +128,6 @@ function DetailProduct() {
           </div>
           {comments.map((cmt, index) => (<Review data={cmt} key={index} />))}
         </div>
-        <Container fluid className="related-product p-3 mt-5">
-          <Container>
-            <Row className="mb-4">
-              <h3 className="black-color">You may also like</h3>
-              <Container>
-                <Row>
-                  {relatedList.map((item, index) => {
-                    return <Col sm={3} key={index}>
-                      <CardComponent dataItem={item} isShowBtn={false} />
-                    </Col>
-                  })}
-                </Row>
-              </Container>
-            </Row>
-          </Container>
-        </Container>
       </Container>
       <Footer />
       <FormModal

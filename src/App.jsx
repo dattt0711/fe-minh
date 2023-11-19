@@ -19,7 +19,7 @@ function App() {
     <div className="App primary-background">
       <NavbarCommon />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Product />} />
         <Route path="/cart" element={<ProtectedRoute component={Cart} />} />
         <Route path="/order" element={<ProtectedRoute component={Order} />} />
         <Route path="/login" element={<Login />} />

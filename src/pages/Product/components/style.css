@@ -23,3 +23,12 @@
 .card-image img:hover {
   transform: scale(1.2);
 }
+
+.btn-order {
+  color: #B87D51 !important;
+
+}
+
+.btn-order:hover {
+  cursor: pointer;
+}

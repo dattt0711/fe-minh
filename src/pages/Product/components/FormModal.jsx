@@ -10,80 +10,36 @@ export default function FormModal(props) {
     return (
         <Modal show={show} onHide={handleCloseModal}>
             <Modal.Header closeButton>
-                <Modal.Title>Create a new product</Modal.Title>
+                <Modal.Title>Create a new stadium</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Container>
                     <Row>
-                        <Col sm={6}>
+                        <Col sm={12}>
                             <Form>
                                 <Form.Group className="mb-3" >
-                                    <Form.Label>Image url</Form.Label>
-                                    <Form.Control
-                                        value={createParams.image}
-                                        onChange={(event) => handleOnChange(event)}
-                                        type="text"
-                                        placeholder="Enter image url"
-                                        name="image"
-                                    />
-                                </Form.Group>
-                                <Form.Group className="mb-3" >
-                                    <Form.Label>Sub image 1</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Enter url"
-                                        name="subImage1"
-                                        value={createParams.subImage1}
-                                        onChange={(event) => handleOnChange(event)}
-                                    />
-                                </Form.Group>
-                                <Form.Group className="mb-3" >
-                                    <Form.Label>Sub image 2</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Enter url"
-                                        name="subImage2"
-                                        value={createParams.subImage2}
-                                        onChange={(event) => handleOnChange(event)}
-                                    />
-                                </Form.Group>
-                                <Form.Group className="mb-3" >
-                                    <Form.Label>Sub image 3</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Enter url"
-                                        name="subImage3"
-                                        value={createParams.subImage3}
-                                        onChange={(event) => handleOnChange(event)}
-                                    />
-                                </Form.Group>
-                            </Form>
-                        </Col>
-                        <Col sm={6}>
-                            <Form>
-                                <Form.Group className="mb-3" >
-                                    <Form.Label>Product name</Form.Label>
+                                    <Form.Label>Stadium name</Form.Label>
                                     <Form.Control
                                         value={createParams.productName}
                                         onChange={(event) => handleOnChange(event)}
                                         type="text"
-                                        placeholder="Enter product name"
-                                        name="productName"
+                                        placeholder="Enter stadium name"
+                                        name="name"
                                     />
                                 </Form.Group>
                                 <Form.Group className="mb-3" >
-                                    <Form.Label>Description</Form.Label>
+                                    <Form.Label>Address</Form.Label>
                                     <Form.Control
                                         type="text"
-                                        placeholder="Enter description"
-                                        name="description"
-                                        value={createParams.description}
+                                        placeholder="Enter address"
+                                        name="address"
+                                        value={createParams.address}
                                         onChange={(event) => handleOnChange(event)}
                                     />
                                 </Form.Group>
-                                <Form.Group className="mb-3" >
-                                    <Form.Label>Category</Form.Label>
-                                    <Form.Select
+                                {/* <Form.Group className="mb-3" > */}
+                                {/* <Form.Label>Category</Form.Label> */}
+                                {/* <Form.Select
                                         name="category"
                                         aria-label="Default select example"
                                         value={createParams.category}
@@ -92,24 +48,14 @@ export default function FormModal(props) {
                                         <option value="">Open this category menu</option>
                                         <option value="Oat Collection">Oat Collection</option>
                                         <option value="Ampoule Collection">Ampoule Collection</option>
-                                    </Form.Select>
-                                </Form.Group>
+                                    </Form.Select> */}
+                                {/* </Form.Group> */}
                                 <Form.Group className="mb-3" >
-                                    <Form.Label>Price</Form.Label>
-                                    <Form.Control
-                                        type="number"
-                                        placeholder="Enter price"
-                                        name="price"
-                                        value={createParams.price}
-                                        onChange={(event) => handleOnChange(event)}
-                                    />
-                                </Form.Group>
-                                <Form.Group className="mb-3" >
-                                    <Form.Label>Details</Form.Label>
+                                    <Form.Label>Image</Form.Label>
                                     <Form.Control
                                         type="text"
-                                        placeholder="Enter details"
-                                        name="details"
+                                        placeholder="Enter image"
+                                        name="image"
                                         value={createParams.details}
                                         onChange={(event) => handleOnChange(event)}
                                     />
