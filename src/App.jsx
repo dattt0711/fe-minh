@@ -21,7 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Product />} />
         <Route path="/cart" element={<ProtectedRoute component={Cart} />} />
-        <Route path="/order" element={<ProtectedRoute component={Order} />} />
+        {/* <Route path="/order" element={<ProtectedRoute component={Order} />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/product" element={<ProtectedRoute component={Product} />} />
