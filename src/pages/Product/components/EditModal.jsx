@@ -54,6 +54,30 @@ export default function EditModal(props) {
                                     />
                                 </Form.Group>
                             </Form>
+                            <Form>
+                                <Form.Group className="mb-3" >
+                                    <Form.Label>Price</Form.Label>
+                                    <Form.Control
+                                        type="number"
+                                        placeholder="Enter Price"
+                                        name="price"
+                                        value={params?.price}
+                                        onChange={(event) => handleOnChange(event)}
+                                    />
+                                </Form.Group>
+                            </Form>
+                            <Form>
+                                <Form.Group className="mb-3" >
+                                    <Form.Label>Phone Number</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter phone number"
+                                        name="phoneNumber"
+                                        value={params?.phoneNumber}
+                                        onChange={(event) => handleOnChange(event)}
+                                    />
+                                </Form.Group>
+                            </Form>
                         </Col>
                     </Row>
                 </Container>

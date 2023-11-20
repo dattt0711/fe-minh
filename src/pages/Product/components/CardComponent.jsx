@@ -23,7 +23,8 @@ export default function CardComponent(props) {
                 <Link to={`/product/detail/${dataItem?._id}`} style={{ textDecoration: 'none' }}>
                     <h4 className="text-dark my-3" >{dataItem?.name}</h4>
                 </Link>
-                {/* <p>{dataItem?.name}</p> */}
+                <p>Phone: {dataItem?.phoneNumber}</p>
+                <p>Price: {dataItem?.price || 0}$</p>
                 {isShowBtn && <span >
                     <Link to={`/cart`}>
                         <CallIcon className="btn-order" />

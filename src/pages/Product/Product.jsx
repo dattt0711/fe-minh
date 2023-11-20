@@ -32,6 +32,8 @@ const initialValue = {
   name: '',
   address: '',
   image: '',
+  price: 0,
+  phoneNumber: '',
 }
 
 function Product() {

@@ -37,26 +37,33 @@ export default function FormModal(props) {
                                         onChange={(event) => handleOnChange(event)}
                                     />
                                 </Form.Group>
-                                {/* <Form.Group className="mb-3" > */}
-                                {/* <Form.Label>Category</Form.Label> */}
-                                {/* <Form.Select
-                                        name="category"
-                                        aria-label="Default select example"
-                                        value={createParams.category}
-                                        onChange={(event) => handleOnChange(event)}
-                                    >
-                                        <option value="">Open this category menu</option>
-                                        <option value="Oat Collection">Oat Collection</option>
-                                        <option value="Ampoule Collection">Ampoule Collection</option>
-                                    </Form.Select> */}
-                                {/* </Form.Group> */}
                                 <Form.Group className="mb-3" >
                                     <Form.Label>Image</Form.Label>
                                     <Form.Control
                                         type="text"
                                         placeholder="Enter image"
                                         name="image"
-                                        value={createParams.details}
+                                        value={createParams.image}
+                                        onChange={(event) => handleOnChange(event)}
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3" >
+                                    <Form.Label>Price</Form.Label>
+                                    <Form.Control
+                                        type="number"
+                                        placeholder="Enter price"
+                                        name="price"
+                                        value={createParams.price}
+                                        onChange={(event) => handleOnChange(event)}
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3" >
+                                    <Form.Label>Phone number</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter phone number"
+                                        name="phoneNumber"
+                                        value={createParams.phoneNumber}
                                         onChange={(event) => handleOnChange(event)}
                                     />
                                 </Form.Group>
