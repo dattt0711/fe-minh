@@ -10,9 +10,9 @@ function DetailInfo(props) {
       <p> <span className="fw-bold">Phone to contact: </span>{dataInfo?.phoneNumber}</p>
       <p> <span className="fw-bold">Price for booking: </span>{dataInfo?.price}$</p>
       <div class="d-flex align-items-center mb-4">
-          <Link to={`/cart`}>
-            <Button className="btn-qty" variant="secondary">Booking</Button>
-         </Link>
+        <Link to={`/cart/${dataInfo?._id}`}>
+          <Button className="btn-qty" variant="secondary">Booking</Button>
+        </Link>
       </div>
     </div>
   )

@@ -6,6 +6,7 @@ const API_INFO_STADIUMS = "http://localhost:5000/stadiums/info";
 const API_LIST_STADIUMS = "http://localhost:5000/stadiums/list";
 const API_DELETE_STADIUMS = "http://localhost:5000/stadiums/delete";
 const API_UPDATE_STADIUMS = "http://localhost:5000/stadiums/update";
+const API_PAYMENT = "http://localhost:5000/stadiums/book";
 export const fetchCreateStadium = (params) => {
     const body = params;
     return axiosBodyToAPI('POST', API_CREATE_STADIUMS, body);
@@ -27,4 +28,9 @@ export const fetchInfoStadiumApi = (params = {}) => {
 export const fetchEditStadium = (params) => {
     const body = params;
     return axiosBodyToAPI('PUT', API_UPDATE_STADIUMS, body);
+};
+
+export const fetchPaymentApi = (params) => {
+    const body = params;
+    return axiosBodyToAPI('POST', API_PAYMENT, body);
 };

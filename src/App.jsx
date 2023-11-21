@@ -20,7 +20,7 @@ function App() {
       <NavbarCommon />
       <Routes>
         <Route path="/" element={<Product />} />
-        <Route path="/cart" element={<ProtectedRoute component={Cart} />} />
+        <Route path="/cart/:stadiumObjId" element={<ProtectedRoute component={Cart} />} />
         {/* <Route path="/order" element={<ProtectedRoute component={Order} />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

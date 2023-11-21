@@ -26,7 +26,7 @@ export default function CardComponent(props) {
                 <p>Phone: {dataItem?.phoneNumber}</p>
                 <p>Price: {dataItem?.price || 0}$</p>
                 {isShowBtn && <span >
-                    <Link to={`/cart`}>
+                    <Link to={`/cart/${dataItem._id}`}>
                         <CallIcon className="btn-order" />
                     </Link>
                 </span>}

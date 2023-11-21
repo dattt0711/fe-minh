@@ -7,26 +7,29 @@ import Form from 'react-bootstrap/Form';
 import './styles.css'
 import QRImage from '../../images/qr.jpg';
 import Button from 'react-bootstrap/Button';
-import {
-    fetchListCartsApi,
-} from '../../api/cartsAPI';
-import {
-    fetchPaymentApi,
-} from '../../api/ordersAPI';
 import { Image } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
+import { fetchInfoStadiumApi, fetchPaymentApi } from '../../api/stadiumsAPI';
 const initParams = {
-    fullName: '',
-    email: '',
+    bookingDate: '',
     phone: '',
-    country: '',
-    city: '',
-    district: '',
+}
+const initUserInfo = {
+    email: '',
+    name: '',
+}
+const initStadiumInfo = {
+    stadiumName: '',
 }
 function Cart() {
     const [listProducts, setListProducts] = useState([]);
     const [params, setParams] = useState(initParams);
     const [reset, setReset] = useState(false);
+    const [userInfo, setUserInfo] = useState(initUserInfo);
+    const [stadiumInfo, setStadiumInfo] = useState(initStadiumInfo);
     const [totalPrice, setTotalPrice] = useState(0);
+    const { stadiumObjId } = useParams();
+
     const handleOnChange = (event) => {
         setParams({
             ...params,
@@ -36,53 +39,39 @@ function Cart() {
     const handleSubmit = async () => {
         const userInfo = JSON.parse(localStorage.getItem("USERS"));
         const userObjId = userInfo?._id;
-        if (userObjId && listProducts) {
-            const productObjIds = listProducts.map((product) => {
-                return {
-                    productObjId: product?.productObjId?._id,
-                    quantity: product?.quantity,
-                }
-            })
-            const totalPrice = listProducts.reduce((prev, curr) => {
-                prev = prev + +curr?.productObjId?.price * +curr?.quantity;
-                return prev;
-            }, 0)
-            await fetchPaymentApi({
-                ...params,
-                productObjIds: productObjIds,
-                userObjId: userObjId,
-                totalPrice: totalPrice,
-            })
-            setReset((prev) => !prev);
+        const paramsSubmit = {
+            ...params,
+            fullName: userInfo?.username,
+            email: userInfo?.email,
+            stadiumObjId,
+            userObjId,
+        }
+        const rs = await fetchPaymentApi(paramsSubmit)
+        if (rs?.data?.data.success) {
             setParams(initParams);
         }
-
     }
     useEffect(() => {
         async function fetchAPI() {
-            const userInfo = JSON.parse(localStorage.getItem("USERS"));
-            const userObjId = userInfo?._id;
-            if (userObjId) {
-                const result = await fetchListCartsApi({
-                    userObjId: userObjId,
-                })
-                if (result?.data?.success) {
-                    setListProducts(result.data.data.productObjIds);
-                }
-            }
+            const userInfoStorage = JSON.parse(localStorage.getItem("USERS"));
+            setUserInfo({
+                name: userInfoStorage?.username,
+                email: userInfoStorage?.email,
+            })
         }
         fetchAPI();
     }, [reset])
     useEffect(() => {
-        if (listProducts?.length > 0) {
-            const price = listProducts.reduce((prev, curr) => {
-                prev = prev + +curr?.productObjId?.price;
-                return prev;
-            }, 0)
-            setTotalPrice(price);
+        async function fetchData() {
+            const rs = await fetchInfoStadiumApi(stadiumObjId);
+            if (rs?.data?.success) {
+                setStadiumInfo({
+                    stadiumName: rs.data.data.name,
+                })
+            }
         }
-    }, [listProducts])
-
+        fetchData();
+    }, [stadiumObjId, reset])
     return (
         <div className="cart">
             <Container>
@@ -95,11 +84,11 @@ function Cart() {
                                     <Form.Group className="mb-3 black-color" controlId="formBasicEmail">
                                         <Form.Label>Full Name</Form.Label>
                                         <Form.Control
-
                                             type="text" placeholder="Enter full name"
                                             name="fullName"
+                                            disabled
+                                            value={userInfo?.name}
                                             onChange={(event) => handleOnChange(event)}
-                                            value={params?.fullName}
                                         />
                                     </Form.Group>
                                 </Col>
@@ -109,7 +98,8 @@ function Cart() {
                                         <Form.Control
                                             name="email"
                                             onChange={(event) => handleOnChange(event)}
-                                            value={params?.email}
+                                            disabled
+                                            value={userInfo?.email}
                                             type="email" placeholder="Enter email" />
                                     </Form.Group>
                                 </Col>
@@ -133,9 +123,9 @@ function Cart() {
                                     <Form.Group className="mb-3 black-color" controlId="formBasicEmail">
                                         <Form.Label>Booking date</Form.Label>
                                         <Form.Control type="date" placeholder="Enter country"
-                                            name="country"
+                                            name="bookingDate"
                                             onChange={(event) => handleOnChange(event)}
-                                            value={params?.country}
+                                            value={params?.bookingDate}
                                         />
                                     </Form.Group>
                                 </Col>
@@ -143,8 +133,8 @@ function Cart() {
                                     <Form.Group className="mb-3 black-color" controlId="formBasicEmail">
                                         <Form.Label>Stadiums</Form.Label>
                                         <Form.Control type="text" placeholder="Stadium name"
-                                        // name="country"
-                                        // value={params?.country}
+                                            disabled
+                                            value={stadiumInfo?.stadiumName}
                                         />
                                     </Form.Group>
                                 </Col>
