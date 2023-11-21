@@ -9,17 +9,12 @@ import { useEffect } from 'react'
 import Form from 'react-bootstrap/Form';
 import FormModal from './components/FormModal'
 import AddIcon from '@mui/icons-material/Add';
-import {
-  fetchCreateProduct, fetchDeleteProductApi, fetchListProductsApi, fetchRelatedListProductsApi,
-  fetchInfoProductApi, fetchEditProduct,
-} from '../../api/productsAPI';
+
 import {
   fetchCreateStadium, fetchDeleteStadiumApi, fetchListStadiumsApi, fetchRelatedListStadiumsApi,
   fetchInfoStadiumApi, fetchEditStadium,
 } from '../../api/stadiumsAPI';
-import {
-  fetchAddToCart,
-} from '../../api/cartsAPI';
+
 import EditModal from './components/EditModal'
 import Pagination from '../../components/Pagination';
 import ToastContainer from 'react-bootstrap/ToastContainer';
@@ -56,10 +51,7 @@ function Product() {
       const res = await fetchListStadiumsApi(
         filters,
       );
-      const result = await fetchListProductsApi(
-        filters,
-      );
-      if (result?.data?.success) {
+      if (res?.data?.success) {
         setStadiumList(res?.data?.data.items);
         setPaginator(res?.data?.data.paginator);
       }

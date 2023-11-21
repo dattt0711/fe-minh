@@ -9,15 +9,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Review from './components/Review';
 import CardComponent from '../Product/components/CardComponent'
-import {
-  fetchInfoProductApi, fetchRelatedListProductsApi,
-} from '../../api/productsAPI';
+
 import {
   fetchInfoStadiumApi
 } from '../../api/stadiumsAPI';
-import {
-  fetchAddToCart,
-} from '../../api/cartsAPI';
+
 import {
   fetchCreateComment, fetchListCommentsApi,
 } from '../../api/commentsAPI';
