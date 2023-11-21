@@ -29,7 +29,7 @@ const initialValue = {
   image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Manchester_United_Old_Trafford_%28cropped%29.jpg/250px-Manchester_United_Old_Trafford_%28cropped%29.jpg',
 }
 const initParams = {
-  productObjId: '',
+  stadiumObjId: '',
   comment: '',
   brief: '',
   rating: 1,
@@ -37,13 +37,10 @@ const initParams = {
 function DetailProduct() {
   const { id } = useParams();
   const [dataInfo, setDataInfo] = useState(initialValue);
-  const [relatedList, setRelatedList] = useState([]);
   const [show, setShow] = useState(false);
   const [createParams, setCreateParams] = useState(initParams);
   const [reset, setReset] = useState(false);
   const [comments, setComments] = useState([]);
-  const [quantity, setQuantity] = useState(1);
-
   //create
   const handleCloseModal = () => {
     setCreateParams(initParams);
@@ -52,14 +49,14 @@ function DetailProduct() {
   const handleSubmit = async () => {
     await fetchCreateComment({
       ...createParams,
-      productObjId: id,
+      stadiumObjId: id,
     })
     setReset((prev) => !prev);
     setShow(false);
     setCreateParams(initialValue);
   }
   const handleOpenModal = () => {
-    // setShow(true);
+    setShow(true);
   }
 
   const handleOnChange = (event) => {
@@ -75,22 +72,9 @@ function DetailProduct() {
     })
   }
   useEffect(() => {
-    if (dataInfo?.category) {
-      async function fetchData() {
-        const rs = await fetchRelatedListProductsApi({
-          category: dataInfo.category,
-        });
-        if (rs?.data?.success) {
-          setRelatedList(rs.data.data.items);
-        }
-      }
-      fetchData();
-    }
-  }, [dataInfo])
-  useEffect(() => {
     async function fetchComment() {
       const rs = await fetchListCommentsApi({
-        productObjId: id,
+        stadiumObjId: id,
       });
       if (rs?.data?.success) {
         setComments(rs.data.data);
@@ -116,7 +100,6 @@ function DetailProduct() {
           </Col>
           <Col sm={6}>
             <DetailInfo
-              quantity={quantity}
               dataInfo={dataInfo}
             />
           </Col>

@@ -7,8 +7,8 @@ import Form from 'react-bootstrap/Form';
 import './styles.css'
 import QRImage from '../../images/qr.jpg';
 import Button from 'react-bootstrap/Button';
-import { Image } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { Image, Toast, ToastContainer } from 'react-bootstrap';
+import { useNavigate, useParams } from 'react-router-dom';
 import { fetchInfoStadiumApi, fetchPaymentApi } from '../../api/stadiumsAPI';
 const initParams = {
     bookingDate: '',
@@ -28,8 +28,10 @@ function Cart() {
     const [userInfo, setUserInfo] = useState(initUserInfo);
     const [stadiumInfo, setStadiumInfo] = useState(initStadiumInfo);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [showNoti, setShowNoti] = useState(false);
+    const [message, setMessage] = useState('');
     const { stadiumObjId } = useParams();
-
+    const navigate = useNavigate();
     const handleOnChange = (event) => {
         setParams({
             ...params,
@@ -47,8 +49,13 @@ function Cart() {
             userObjId,
         }
         const rs = await fetchPaymentApi(paramsSubmit)
-        if (rs?.data?.data.success) {
+        if (rs?.data?.success) {
             setParams(initParams);
+            navigate('/order');
+        } else {
+          setShowNoti(true)
+          setMessage(rs?.data?.message);
+          setParams(initParams);
         }
     }
     useEffect(() => {
@@ -74,6 +81,24 @@ function Cart() {
     }, [stadiumObjId, reset])
     return (
         <div className="cart">
+            <ToastContainer position="top-center">
+              <Toast className="custom-toast" show={showNoti}
+                autohide={true}
+                delay={5000}
+                onClose={() => setShowNoti(false)}>
+                <Toast.Header>
+                  <img
+                    src="holder.js/20x20?text=%20"
+                    className="rounded me-2"
+                    alt=""
+                  />
+                  <strong className="me-auto">Notification</strong>
+                </Toast.Header>
+                <Toast.Body>
+                  <span className="fw-bold text-black">  {message}</span>
+                </Toast.Body>
+              </Toast>
+            </ToastContainer>
             <Container>
                 <Row>
                     <Col sm={12}>

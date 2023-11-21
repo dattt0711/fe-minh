@@ -13,114 +13,84 @@ import {
     fetchListOrderApi,
 } from '../../api/ordersAPI';
 import Modal from 'react-bootstrap/Modal';
-const initParams = {
-    fullName: '',
-    email: '',
-    phone: '',
-    country: '',
-    city: '',
-    district: '',
+import PaginationComponent from '../../components/Pagination';
+
+const initFilters = {
+  page: 1,
 }
 function Order() {
     const [listOrders, setListOrders] = useState([]);
     const [reset, setReset] = useState(false);
-    const [show, setShow] = useState(false);
-    const [products, setProducts] = useState([]);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const handleOpen = (orderId) => {
-        setShow(true);
-        const findOrder = listOrders.find(item => item?._id?.toString() === orderId?.toString());
-        setProducts(findOrder?.productObjIds);
-    };
+    const [filters, setFilters] = useState(initFilters);
+ 
+    const [paginator, setPaginator] = useState({
+      pageCount: 1,
+      currentPage: 1,
+    })
     useEffect(() => {
         async function fetchAPI() {
             const userInfo = JSON.parse(localStorage.getItem("USERS"));
             const userObjId = userInfo?._id;
             if (userObjId) {
-                const result = await fetchListOrderApi({
-                })
+                const params = {
+                  ...filters,
+                };
+                if(!userInfo?.isAdmin) {
+                    params.userObjId = userObjId;
+                }
+                const result = await fetchListOrderApi(params)
                 if (result?.data?.success) {
-                    setListOrders(result.data.data);
+                    setListOrders(result.data.data.items);
+                    setPaginator(result?.data?.data.paginator);
                 }
             }
         }
         fetchAPI();
     }, [reset])
+     // Handle page
+  const handlePage = async (page) => {
+    setFilters((prev) => {
+      return {
+        ...prev,
+        page: +page,
+      }
+    })
+  }
     return (
         <div className="order-container" >
             <Container >
-                <h2 className="black-color">Order management</h2>
+                <h2 className="black-color">Booking histories</h2>
                 <Table striped bordered hover className="mt-5">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Country</th>
-                            <th>City</th>
-                            <th>District</th>
-                            <th>Phone number</th>
-                            <th>Receiver name</th>
-                            <th>Order date</th>
-                            <th>Total price</th>
-                            <th>Function</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Booking date</th>
+                            <th>Stadium name</th>
+                            <th>Stadium price</th>
                         </tr>
                     </thead>
                     <tbody>
                         {listOrders.map((data, index) => {
                             return (
-                                <tr key={index}>
+                                <tr key={data._id}>
                                     <td>{index + 1}</td>
-                                    <td>{data?.country}</td>
-                                    <td>{data?.city}</td>
-                                    <td>{data?.district}</td>
-                                    <td>{data?.phoneNumber}</td>
-                                    <td>{data?.receiverName}</td>
-                                    <td>{data?.createdAt}</td>
-                                    <td>{data?.totalPrice}</td>
-                                    <td className="text-center">
-                                        <Button className="btn-pri" onClick={() => handleOpen(data?._id)}>
-                                            <VisibilityIcon />
-                                        </Button>
-                                    </td>
-
+                                    <td>{data?.fullName}</td>
+                                    <td>{data?.email}</td>
+                                    <td>{data?.phone}</td>
+                                    <td>{data?.bookingDate}</td>
+                                    <td>{data?.stadiumObjId?.name}</td>
+                                    <td>{data?.stadiumObjId?.price}</td>
                                 </tr>
                             )
                         })}
                     </tbody>
                 </Table>
-                <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Table striped bordered hover>
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Product name</th>
-                                    <th>Quantity</th>
-                                    <th>Unit Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {products.map((pro, index) => (
-                                    <tr key={pro?._id}>
-                                        <td>{index + 1}</td>
-                                        <td>{pro?.productObjId?.productName}</td>
-                                        <td>{pro?.quantity}</td>
-                                        <td>{pro?.productObjId?.price}</td>
-                                    </tr>
-
-                                ))}
-                            </tbody>
-                        </Table>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button className="btn-bold" onClick={handleClose}>
-                            Close
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
+                <Row>
+          <PaginationComponent paginator={paginator} handlePage={handlePage} />
+        </Row>
             </Container>
         </div >
 

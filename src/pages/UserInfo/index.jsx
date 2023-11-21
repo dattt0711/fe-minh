@@ -43,12 +43,12 @@ function UserInfo() {
                             <PersonOutlineIcon className="me-2" />
                             <span>PERSONAL INFO</span>
                         </div>
-                        {isAdmin && <div className="black-color border-bottom ps-2 pb-2 mt-3">
+                         <div className="black-color border-bottom ps-2 pb-2 mt-3">
                             <Link to="/order" className="text-dark" style={{ textDecoration: 'none' }}>
                                 <EventNoteIcon className="me-2" />
                                 <span>BOOKING HISTORIES</span>
                             </Link>
-                        </div>}
+                        </div>
                         <div className="black-color border-bottom ps-2 pb-2 mt-3" onClick={handleLogout}>
                             <LogoutIcon className="me-2" />
                             <span>LOG OUT</span>
